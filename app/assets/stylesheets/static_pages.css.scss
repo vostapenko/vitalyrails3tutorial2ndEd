@@ -1,5 +1,15 @@
 @import "bootstrap";
 
+/* mixins, variables, etc. */
+
+$grayMediumLight: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
 /* universal */
 
 html {
@@ -28,6 +38,7 @@ textarea {
 
 /* typography */
 
+
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
@@ -48,6 +59,7 @@ h2 {
   color: #999;
 }
 
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
@@ -60,7 +72,9 @@ p {
   margin-right: 10px;
   font-size: 1.7em;
   color: #fff;
+
   text-transform: uppercase;
+
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
@@ -81,6 +95,7 @@ p {
 
 footer {
   margin-top: 45px;
+
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #999;
@@ -106,4 +121,14 @@ footer ul {
 footer ul li {
   float: left;
   margin-left: 10px;
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
 }
