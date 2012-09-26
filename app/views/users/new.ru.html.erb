@@ -18,7 +18,10 @@
       <%= f.label :password_confirmation, "Подтверждение пароля" %>
       <%= f.password_field :password_confirmation %>
 
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+      <%= f.label :locale %>
+      <%= f.select :locale, User::LOCALE %>
+
+      <%= f.submit "Создать учётную запись", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
 </div>

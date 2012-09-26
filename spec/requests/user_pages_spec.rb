@@ -5,7 +5,7 @@ describe "User pages" do
   subject { page }
 
   describe "Sign up page" do
-    before { visit signup_path }
+    before { visit signup_path(locale: "en") }
 
     it { should have_selector('h1', text: 'Sign up') }
     it { should have_selector('title', text: full_title('Sign up')) }
@@ -13,18 +13,18 @@ describe "User pages" do
 
   describe "Profile page" do
     let(:user) { FactoryGirl.create(:user) }
-    before { visit user_path(user) }
+    before { visit user_path(user, locale: "en") }
 
     it { should have_selector('h1', text: user.name) }
     it { should have_selector('title', text: user.name) }
   end
 
   describe "Signup" do
-    before { visit signup_path }
-
+    before { visit signup_path(locale: "en") }
     let(:submit) { "Create my account" }
 
     describe "with invalid information" do
+
       it "should not create a user" do
         expect { click_button submit }.not_to change(User, :count)
       end
@@ -43,6 +43,7 @@ describe "User pages" do
         fill_in "Email",        with: "user@example.com"
         fill_in "Password",     with: "foobar"
         fill_in "Confirmation", with: "foobar"
+        select  "en",           from: "Locale"
       end
 
       it "should create a user" do

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    set_locale @user
   end
 
   def new
@@ -11,7 +12,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:success] = "Welcome to the Sample APP"
+      set_locale @user
+      flash[:success] = t(:flash_message)
       redirect_to @user
     else
       render 'new'

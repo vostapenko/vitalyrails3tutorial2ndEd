@@ -3,3 +3,5 @@ en:
     attributes:
       user:
         password_digest: "Password"
+
+  flash_message: "Welcome to the Sample APP"
