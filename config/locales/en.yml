@@ -4,4 +4,13 @@ en:
       user:
         password_digest: "Password"
 
-  flash_message: "Welcome to the Sample APP"
+  flash_message: "Welcome to the Sample APP."
+  flash_error: "Invalid email/password combination"
+  flash_update: "Profile updated."
+  flash_destroy: "User destroyed"
+  flash_signin: "Please sign in."
+
+  will_paginate:
+    previous_label: "Previous"
+    page_gap: "Page gap"
+    next_label: "Next"

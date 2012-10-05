@@ -1,5 +1,5 @@
-<% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
+<% provide(:title, 'Edit user') %>
+<h1>Update you profile</h1>
 
 <div class="row">
   <div class="span6 offset3">
@@ -21,7 +21,10 @@
       <%= f.label :locale %>
       <%= f.select :locale, User::LOCALE %>
 
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
-    <% end %>
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <% end %>                       
+
+    <%= gravatar_for @user %>
+    <a href="http://gravatar.com/emails">change</a>
   </div>
 </div>

@@ -10,7 +10,7 @@ describe "Static pages" do
   subject { page }
 
   describe "Home page" do
-    before { visit root_path(locale: "en") }
+    before { visit root_path }
     let(:heading) { 'Sample App' }
     let(:page_title) { '' }
 
@@ -19,7 +19,7 @@ describe "Static pages" do
   end
 
   describe "Help page" do
-    before { visit help_path(locale: "en") }
+    before { visit help_path }
     let(:heading) { 'Help' }
     let(:page_title) { 'Help' }
 
@@ -27,7 +27,7 @@ describe "Static pages" do
   end
 
   describe "About page" do
-    before { visit about_path(locale: "en") }
+    before { visit about_path }
     let(:heading) { 'About' }
     let(:page_title) { 'About Us' }
 
@@ -35,7 +35,7 @@ describe "Static pages" do
   end
 
   describe "Contact page" do
-    before { visit contact_path(locale: "en") }
+    before { visit contact_path }
     let(:heading) { 'Contact' }
     let(:page_title) { 'Contact' }
 
@@ -43,7 +43,7 @@ describe "Static pages" do
   end
    
   it "should have the right links on the layout" do
-    visit root_path(locale: "en")
+    visit root_path
     click_link "About"
     page.should have_selector 'title', text: full_title('About Us')
     click_link "Help"

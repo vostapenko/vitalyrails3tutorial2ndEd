@@ -2,6 +2,15 @@ ru:
   activerecord:
     attributes:
       user:
-        password_digest: "Password"
+        password_digest: "Пароль"
 
-  flash_message: "Добро пожаловать в Sample APP"
+  flash_message: "Добро пожаловать в Sample APP."
+  flash_error: "Неверный емейл/пароль"
+  flash_update: "Профиль обновлён."
+  flash_destroy: "Пользователь удалён"
+  flash_signin: "Пожалуйста, авторизируйтесь."
+  
+  will_paginate:
+    previous_label: "Назад"
+    page_gap: "Разрыв страницы"
+    next_label: "Вперёд"
