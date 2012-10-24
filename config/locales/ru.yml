@@ -5,9 +5,10 @@ ru:
         password_digest: "Пароль"
 
   flash_message: "Добро пожаловать в Sample APP."
-  flash_error: "Неверный емейл/пароль"
+  flash_error: "Неверный емейл/пароль."
   flash_update: "Профиль обновлён."
-  flash_destroy: "Пользователь удалён"
+  flash_destroy: "Пользователь удалён."
+  flash_admin_destroy: "Невозможно удалить этого пользователя."
   flash_signin: "Пожалуйста, авторизируйтесь."
   
   will_paginate:

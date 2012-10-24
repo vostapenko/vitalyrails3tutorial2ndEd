@@ -5,9 +5,10 @@ en:
         password_digest: "Password"
 
   flash_message: "Welcome to the Sample APP."
-  flash_error: "Invalid email/password combination"
+  flash_error: "Invalid email/password combination."
   flash_update: "Profile updated."
-  flash_destroy: "User destroyed"
+  flash_destroy: "User destroyed."
+  flash_admin_destroy: "Can't delete this user."
   flash_signin: "Please sign in."
 
   will_paginate:
