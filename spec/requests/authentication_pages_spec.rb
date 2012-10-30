@@ -38,6 +38,19 @@ describe "Authentication" do
               end
             end
           end
+
+          describe "in he Microposts controller" do
+
+            describe "submiting to the create action" do
+               before { post microposts_path }
+               specify { response.should redirect_to(signin_path) }
+            end
+
+            describe "submiting to the destroy action" do
+               before { delete micropost_path(FactoryGirl.create(:micropost)) }
+               specify { response.should redirect_to(signin_path) }
+            end
+          end
         end
 
        describe "in the Users controller" do
@@ -90,14 +103,14 @@ describe "Authentication" do
      end
   end
 
-  describe "Sign in page" do
+  describe "sign in page" do
     before { visit signin_path }
 
     it { should have_selector('h1', text: 'Sign in') }
     it { should have_selector('title', text: 'Sign in') }
   end
 
-  describe "Sigin" do
+  describe "sign in" do
     before { visit signin_path }
 
     describe "with invalid information" do

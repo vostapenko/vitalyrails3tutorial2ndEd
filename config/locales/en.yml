@@ -10,6 +10,7 @@ en:
   flash_destroy: "User destroyed."
   flash_admin_destroy: "Can't delete this user."
   flash_signin: "Please sign in."
+  flash_create_micropost: "Micropost created."
 
   will_paginate:
     previous_label: "Previous"

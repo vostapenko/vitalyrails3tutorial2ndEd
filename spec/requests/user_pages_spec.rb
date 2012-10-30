@@ -50,25 +50,34 @@ describe "User pages" do
     end
   end
 
-  describe "Sign up page" do
+  describe "sign up page" do
     before { visit signup_path }
 
     it { should have_selector('h1', text: 'Sign up') }
     it { should have_selector('title', text: full_title('Sign up')) }
   end
 
-  describe "Profile page" do
+  describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
+    let!(:m1) { FactoryGirl.create(:micropost, user: user, content: "Foo") }
+    let!(:m2) { FactoryGirl.create(:micropost, user: user, content: "Bar") }
+
     before do  
       sign_in user
       visit user_path(user) 
     end
 
     it { should have_selector('h1', text: user.name) }
-    it { should have_selector('title', text: user.name) }
+    it { should have_selector('title', text: user.name) }   
+
+    describe "microposts" do
+      it { should have_content(m1.content) }
+      it { should have_content(m2.content) }
+      it { should have_content(user.microposts.count) }
+    end
   end
 
-  describe "Edit" do
+  describe "edit" do
     let(:user) {FactoryGirl.create(:user) }
     before do 
       sign_in user
@@ -76,7 +85,7 @@ describe "User pages" do
     end
 
     describe "page" do
-     it { should have_selector('h1',    text: "Update you profile") }
+     it { should have_selector('h1',    text: "Update your profile") }
      it { should have_selector('title', text: "Edit user") }
      it { should have_link('change',    href: 'http://gravatar.com/emails') }
     end
@@ -107,7 +116,7 @@ describe "User pages" do
     end
   end
 
-  describe "Signup" do
+  describe "sign up" do
     before { visit signup_path }
     let(:submit) { "Create my account" }
 

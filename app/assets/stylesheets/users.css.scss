@@ -1,10 +1,4 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-/* mixins, variables, etc. */
-
-$grayLighter: #eaeaea;
+$grayLight: #eaeaea;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box; 
@@ -17,7 +11,7 @@ $grayLighter: #eaeaea;
 aside {
   section {
     padding: 10px 0;
-    border-top: 1px solid $grayLighter;
+    border-top: 1px solid $grayLight;
     &:first-child {
       border: 0;
       padding-top: 0;
@@ -71,9 +65,9 @@ input, textarea, select, .uneditable-input {
     li {
       overflow: auto;
       padding: 10px 0;
-      border-top: 1px solid $grayLighter;
+      border-top: 1px solid $grayLight;
       &:last-child {
-        border-bottom: 1px solid $grayLighter
+        border-bottom: 1px solid $grayLight;
       }
     }
  }

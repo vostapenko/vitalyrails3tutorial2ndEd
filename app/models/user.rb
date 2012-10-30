@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :locale
   has_secure_password
 
+  has_many :microposts, dependent: :destroy
+
   before_save { self.email.downcase! }
   before_save :create_remember_token
 
@@ -15,6 +17,9 @@ class User < ActiveRecord::Base
 
   LOCALE = ['en', 'ru']
 
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
 
   private
 

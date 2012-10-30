@@ -7,10 +7,10 @@ namespace :db do
                  password_confirmation: "vitaly",
                  locale: "ru")
       admin = User.create!(name: "Site Administrator",
-                  email: "admin@gmail.com",
-                  password: "administrator",
-                  password_confirmation: "administrator",
-                  locale: "en")
+                 email: "admin@gmail.com",
+                 password: "administrator",
+                 password_confirmation: "administrator",
+                 locale: "en")
       admin.toggle!(:admin)
       99.times do |n|
         name = Faker::Name.name
@@ -22,5 +22,11 @@ namespace :db do
                     password_confirmation: password,
                     locale: "en")
       end
+
+      users = User.all(limit: 6)
+      50.times do
+        content = Faker::Lorem.sentence(5)
+        users.each { |user| user.microposts.create!(content: content) }
+     end
    end
 end

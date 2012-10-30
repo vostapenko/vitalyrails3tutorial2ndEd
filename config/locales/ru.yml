@@ -10,6 +10,7 @@ ru:
   flash_destroy: "Пользователь удалён."
   flash_admin_destroy: "Невозможно удалить этого пользователя."
   flash_signin: "Пожалуйста, авторизируйтесь."
+  flash_create_micropost: "Сообщение создано."
   
   will_paginate:
     previous_label: "Назад"
