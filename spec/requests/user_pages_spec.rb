@@ -34,8 +34,20 @@ describe "User pages" do
 
       it { should_not have_link('delete') }
 
+      describe "as an other user" do
+        let(:user){ FactoryGirl.create(:user) }
+        let(:other_user){ FactoryGirl.create(:user) }
+
+        before do
+          sign_in user
+          visit user_path(other_user)
+        end
+        it { should_not have_link('delete', href: user_path(other_user)) }
+      end
+
       describe "as an admin user" do
         let(:admin) { FactoryGirl.create(:admin) }
+
         before do
           sign_in admin
           visit users_path
@@ -74,6 +86,13 @@ describe "User pages" do
       it { should have_content(m1.content) }
       it { should have_content(m2.content) }
       it { should have_content(user.microposts.count) }
+      it { should have_selector('h3', text: "Microposts") }
+    end
+
+    describe "pagination" do
+      before(:all) { 50.times { FactoryGirl.create(:micropost, user: user, content: "Lorem ipsum") } }
+
+      it { should have_selector('div.pagination') }
     end
   end
 
