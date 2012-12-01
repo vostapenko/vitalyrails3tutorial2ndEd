@@ -3,6 +3,9 @@ en:
     attributes:
       user:
         password_digest: "Password"
+        
+  following: "Following"
+  followers: "Followers"
 
   flash_message: "Welcome to the Sample APP."
   flash_error: "Invalid email/password combination."

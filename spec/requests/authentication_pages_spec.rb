@@ -4,8 +4,7 @@ describe "Authentication" do
 
   subject { page }
 
-
-  describe "autorization" do
+  describe "authorization" do
 
      describe "for non-signed-in users" do
        let(:user) { FactoryGirl.create(:user) }
@@ -16,7 +15,7 @@ describe "Authentication" do
             fill_in "Email",    with: user.email
             fill_in "Password", with: user.password
             click_button  'Sign in'
-       end
+          end
 
           describe "after signing in" do
 
@@ -38,6 +37,18 @@ describe "Authentication" do
               end
             end
           end
+
+       describe "in the Relationships controller" do
+          describe "submiting to the create action" do
+             before { post relationships_path}
+             specify { response.should redirect_to(signin_path) }
+          end
+
+          describe "submiting to the destroy action" do
+             before { delete relationship_path(1) }
+             specify { response.should redirect_to(signin_path) }
+          end
+       end
 
           describe "in he Microposts controller" do
 
@@ -70,6 +81,16 @@ describe "Authentication" do
             it { should have_selector('title', text: 'Sign in') }
             it { should_not have_link('Profile') }
             it { should_not have_link('Settings') }
+         end
+
+         describe "visiting the following page" do
+            before { visit following_user_path(user) }
+            it { should have_selector('title', text: 'Sign in') }
+         end
+
+         describe " visiting the followers page" do
+            before { visit followers_user_path(user) }
+            it { should have_selector('title', text: 'Sign in') }
          end
        end
      end

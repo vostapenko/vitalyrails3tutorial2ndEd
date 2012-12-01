@@ -3,6 +3,9 @@ ru:
     attributes:
       user:
         password_digest: "Пароль"
+        
+  following: "Читаемых"
+  followers: "Читателей"
 
   flash_message: "Добро пожаловать в Sample APP."
   flash_error: "Неверный емейл/пароль."

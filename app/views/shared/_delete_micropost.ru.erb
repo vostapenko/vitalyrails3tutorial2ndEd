@@ -1,5 +1,5 @@
   <% if current_user?(object.user) %>                             
-    <%= link_to "delete", object, method: :delete,                
+    <%= link_to "удалить", object, method: :delete,                
                                      data: { confirm: "Вы уверены?" }, 
                                      title: object.content %>     
   <% end %>                                                          
