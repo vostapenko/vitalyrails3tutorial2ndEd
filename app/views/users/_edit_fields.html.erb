@@ -1,0 +1,11 @@
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<%= f.label :email %>
+<%= f.text_field :email %>
+
+<%= f.label :locale %>                
+<%= f.select :locale, User::LOCALE %> 
+
+<%= f.label :password %>
+<%= f.password_field :password %>

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :signed_in_user,  only: [:index, :show, :edit, :update, :destroy, :following, :followers]
   before_filter :correct_user,    only: [:edit, :update]
   before_filter :admin_user,      only: :destroy
-  before_filter :set_locale,      except: [:create, :update]
+  before_filter :set_locale,      except: [:create]
   before_filter :deny_sign_up,    only: [:new, :create]
 
   def index
@@ -35,12 +35,13 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @user.authenticate(params[:user][:password]) &&  @user.update_attributes(params[:user])
       I18n.locale = "#{params[:user][:locale]}"
-    if @user.update_attributes(params[:user])
       flash[:success] = t(:flash_update)
       sign_in @user
       redirect_to @user
     else
+      flash[:error] = t(:flash_error)
       render 'edit'
     end
   end
@@ -52,7 +53,7 @@ class UsersController < ApplicationController
       redirect_to users_url
     else
      user.destroy
-     flash[:success] = t(:flash_destroy)
+     flash[:success] = t(:flash_user_destroy)
      redirect_to users_url
     end
   end

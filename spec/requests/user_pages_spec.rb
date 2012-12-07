@@ -162,7 +162,7 @@ describe "User pages" do
     describe "with invalid information" do
       before { click_button "Save changes" }
 
-      it { should have_content('error') }
+      it { should have_content('Invalid') }
     end
 
     describe "with valid information" do
@@ -173,7 +173,7 @@ describe "User pages" do
         fill_in "Name",                   with: new_name
         fill_in "Email",                  with: new_email
         fill_in "Password",               with: user.password
-        fill_in "Password confirmation",  with: user.password
+        select  "en",                     with: user.locale
         click_button "Save changes"
       end
 

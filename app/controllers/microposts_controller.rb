@@ -20,7 +20,8 @@ class MicropostsController < ApplicationController
 
   def destroy
     @micropost.destroy
-    redirect_to root_url
+    flash[:success] = t(:flash_micropost_destroy)
+    redirect_to @current_user
   end
 
   private

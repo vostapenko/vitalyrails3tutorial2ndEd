@@ -20,8 +20,8 @@ class User < ActiveRecord::Base
   validates :email, presence:   true,
                     format:     { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :password, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
+  validates :password, length: { within: 6..40 }, on: :create
+  validates :password_confirmation, presence: true, on: :create
 
   LOCALE = ['en', 'ru']
 
