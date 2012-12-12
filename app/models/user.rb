@@ -20,10 +20,18 @@ class User < ActiveRecord::Base
   validates :email, presence:   true,
                     format:     { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :password, length: { within: 6..40 }, on: :create
+  validates :password, presence: true, length: { within: 6..40 }, on: :create
+  validates :password, presence: true, length: { within: 6..40 }, on: :update, unless: lambda{ |user| user.password.to_s.empty? } 
   validates :password_confirmation, presence: true, on: :create
 
   LOCALE = ['en', 'ru']
+
+  def send_password_reset
+    generate_token
+    set_time
+    save!
+    UserMailer.password_reset(self).deliver
+  end
 
   def feed
     Micropost.from_users_followed_by(self)
@@ -45,5 +53,12 @@ class User < ActiveRecord::Base
 
   def create_remember_token
     self.remember_token = SecureRandom.urlsafe_base64
+  end
+
+  def generate_token
+    self.password_reset_token = SecureRandom.urlsafe_base64
+  end
+  def set_time
+    self.password_reset_sent_at = Time.zone.now
   end
 end

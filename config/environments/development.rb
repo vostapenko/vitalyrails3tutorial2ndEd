@@ -34,4 +34,12 @@ VitalySampleApp2ndEd::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Mailer actions
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:    'smtp.funny.org',
+    port:       25
+  }
+  config.action_mailer.default_url_options = { host: "gamma.ukrpost.local:3000"}
 end

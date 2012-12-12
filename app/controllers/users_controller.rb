@@ -35,13 +35,18 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.authenticate(params[:user][:password]) &&  @user.update_attributes(params[:user])
-      I18n.locale = "#{params[:user][:locale]}"
-      flash[:success] = t(:flash_update)
-      sign_in @user
-      redirect_to @user
+       @user = User.find(params[:id])
+    if @user.authenticate(params[:user][:password]) 
+      if @user.update_attributes(params[:user])
+        I18n.locale = "#{params[:user][:locale]}"
+        sign_in @user
+        flash[:success] = t(:flash_user_update)
+        redirect_to @user
+      else
+        render 'edit'
+      end
     else
-      flash[:error] = t(:flash_error)
+      flash[:error] = t(:flash_user_password)
       render 'edit'
     end
   end
@@ -49,7 +54,7 @@ class UsersController < ApplicationController
   def destroy
     user = User.find(params[:id])
     if user.admin?
-      flash[:notice] = t(:flash_admin_destroy)
+      flash[:error] = t(:flash_admin_destroy)
       redirect_to users_url
     else
      user.destroy

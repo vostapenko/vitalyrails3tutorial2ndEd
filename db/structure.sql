@@ -18,7 +18,7 @@ CREATE TABLE `relationships` (
   UNIQUE KEY `index_relationships_on_follower_id_and_followed_id` (`follower_id`,`followed_id`),
   KEY `index_relationships_on_follower_id` (`follower_id`),
   KEY `index_relationships_on_followed_id` (`followed_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=262 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=263 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `schema_migrations` (
   `version` varchar(255) NOT NULL,
@@ -35,10 +35,12 @@ CREATE TABLE `users` (
   `locale` varchar(255) DEFAULT NULL,
   `remember_token` varchar(255) DEFAULT NULL,
   `admin` tinyint(1) DEFAULT '0',
+  `password_reset_token` varchar(255) DEFAULT NULL,
+  `password_reset_sent_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   KEY `index_users_on_remember_token` (`remember_token`)
-) ENGINE=InnoDB AUTO_INCREMENT=304 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=305 DEFAULT CHARSET=utf8;
 
 INSERT INTO schema_migrations (version) VALUES ('20120912083053');
 
@@ -55,3 +57,5 @@ INSERT INTO schema_migrations (version) VALUES ('20121005114535');
 INSERT INTO schema_migrations (version) VALUES ('20121026060704');
 
 INSERT INTO schema_migrations (version) VALUES ('20121101103628');
+
+INSERT INTO schema_migrations (version) VALUES ('20121210151152');

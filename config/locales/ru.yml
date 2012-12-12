@@ -3,19 +3,31 @@ ru:
     attributes:
       user:
         password_digest: "Пароль"
+        name: "Имя"
+        email: "Емейл"                                 
+        password: "Пароль"                           
+        password_confirmation: "Подтверждение пароля" 
         
   following: "Читаемых"
   followers: "Читателей"
 
   flash_message: "Добро пожаловать в Sample APP."
   flash_error: "Неверный емейл/пароль."
-  flash_update: "Профиль обновлён."
-  flash_user_destroy: "Пользователь удалён."
-  flash_micropost_destroy: "Сообщение удалено."
-  flash_admin_destroy: "Невозможно удалить этого пользователя."
   flash_signin: "Пожалуйста, авторизируйтесь."
-  flash_create_micropost: "Сообщение создано."
+
+  flash_user_update: "Профиль обновлён."
+  flash_user_destroy: "Пользователь удалён."
+  flash_user_password: "Неверный пароль."
+  flash_admin_destroy: "Невозможно удалить этого пользователя."
+
+  flash_micropost_create: "Сообщение создано."
+  flash_micropost_destroy: "Сообщение удалено."
   
+  flash_password_resets_create: "Инструкции по сбросу пароля отправлены на Ваш емайл." 
+  flash_password_resets_update: "Пароль изменён!"
+  flash_password_resets_error: "Время для изменения пароля истекло."
+  flash_password_blank_error: "Пароль не может быть пустым!"
+
   will_paginate:
     previous_label: "Назад"
     page_gap: "Разрыв страницы"

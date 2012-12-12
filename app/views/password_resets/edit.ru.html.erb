@@ -1,0 +1,9 @@
+<% provide(:title, 'Сброс пароля') %>
+<h1>Сброс пароля</h1>
+
+<%= form_for @user, url: password_reset_path(params[:id]) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <%= render 'edit_fields', f: f %>
+  
+  <%= f.submit "Обновить пароль", class: "btn btn-large btn-primary" %>
+<% end %>

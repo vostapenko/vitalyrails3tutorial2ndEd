@@ -3,18 +3,30 @@ en:
     attributes:
       user:
         password_digest: "Password"
+        name: "Name"
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Password confirmation"
         
   following: "Following"
   followers: "Followers"
 
   flash_message: "Welcome to the Sample APP."
   flash_error: "Invalid email/password combination."
-  flash_update: "Profile updated."
-  flash_user_destroy: "User destroyed."
-  flash_micropost_destroy: "Micropost destroyed."
-  flash_admin_destroy: "Can't delete this user."
   flash_signin: "Please sign in."
-  flash_create_micropost: "Micropost created."
+
+  flash_user_update: "Profile updated."
+  flash_user_destroy: "User destroyed."
+  flash_user_password: "Invalid password"
+  flash_admin_destroy: "Can't delete this user."
+
+  flash_micropost_create: "Micropost created."
+  flash_micropost_destroy: "Micropost destroyed."
+
+  flash_password_resets_create: "Email sent with password reset instructions."
+  flash_password_resets_update: "Password has been reset!"
+  flash_password_resets_error: "Password reset has expired."
+  flash_password_blank_error: "Password can't be blank!"
 
   will_paginate:
     previous_label: "Previous"

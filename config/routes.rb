@@ -1,5 +1,9 @@
 VitalySampleApp2ndEd::Application.routes.draw do
     
+  get "password_resets/new"
+
+  get "pasword_reset/new"
+
   root to: 'static_pages#home'
 
   resources :users do
@@ -11,6 +15,7 @@ VitalySampleApp2ndEd::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy] 
   resources :microposts, only: [:index, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  resources :password_resets, only: [:new, :create, :edit, :update]
 
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
