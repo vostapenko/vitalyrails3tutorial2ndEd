@@ -40,7 +40,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   KEY `index_users_on_remember_token` (`remember_token`)
-) ENGINE=InnoDB AUTO_INCREMENT=305 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=308 DEFAULT CHARSET=utf8;
 
 INSERT INTO schema_migrations (version) VALUES ('20120912083053');
 
@@ -59,3 +59,7 @@ INSERT INTO schema_migrations (version) VALUES ('20121026060704');
 INSERT INTO schema_migrations (version) VALUES ('20121101103628');
 
 INSERT INTO schema_migrations (version) VALUES ('20121210151152');
+
+INSERT INTO schema_migrations (version) VALUES ('20121212134217');
+
+INSERT INTO schema_migrations (version) VALUES ('20121212134944');

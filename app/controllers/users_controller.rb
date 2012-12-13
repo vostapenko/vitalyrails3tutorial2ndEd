@@ -39,6 +39,7 @@ class UsersController < ApplicationController
     if @user.authenticate(params[:user][:password]) 
       if @user.update_attributes(params[:user])
         I18n.locale = "#{params[:user][:locale]}"
+        set_cookies
         sign_in @user
         flash[:success] = t(:flash_user_update)
         redirect_to @user

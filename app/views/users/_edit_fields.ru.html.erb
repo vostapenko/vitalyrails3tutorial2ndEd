@@ -9,3 +9,6 @@
 
 <%= f.label :password, "Пароль" %>                           
 <%= f.password_field :password %>                            
+
+<%= check_box_tag :remember_me, false, {name: 'checkbox'} %> 
+<%= label_tag :remember_me, "Запомнить меня" %>            

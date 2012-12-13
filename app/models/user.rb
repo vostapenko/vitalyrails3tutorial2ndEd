@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation, :locale
+  attr_accessible :name, :email, :password, :password_confirmation, :locale, :remember_me
   has_secure_password
 
   has_many :microposts, dependent: :destroy
