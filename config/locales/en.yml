@@ -28,6 +28,8 @@ en:
   flash_password_resets_error: "Password reset has expired."
   flash_password_blank_error: "Password can't be blank!"
 
+  flash_activation: "You account is activated."
+
   will_paginate:
     previous_label: "Previous"
     page_gap: "Page gap"

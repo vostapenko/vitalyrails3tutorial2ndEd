@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation, :locale, :remember_me
+  attr_accessible :name, :email, :password, :password_confirmation, :locale, :active
   has_secure_password
+
+  scope :active, where(active: true)
 
   has_many :microposts, dependent: :destroy
   has_many :relationships,         foreign_key: "follower_id",
@@ -14,6 +16,8 @@ class User < ActiveRecord::Base
 
   before_save { self.email.downcase! }
   before_save :create_remember_token
+  before_save :send_activation
+
 
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -58,7 +62,20 @@ class User < ActiveRecord::Base
   def generate_token
     self.password_reset_token = SecureRandom.urlsafe_base64
   end
+
+  def activation
+    self.activation_token = SecureRandom.urlsafe_base64
+  end
+
   def set_time
     self.password_reset_sent_at = Time.zone.now
   end
+
+  def send_activation                    
+    unless self.active?                      
+      create_remember_token              
+      activation                         
+      UserMailer.activation(self).deliver
+    end
+  end                                    
 end

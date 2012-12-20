@@ -7,11 +7,11 @@ class UsersController < ApplicationController
   before_filter :deny_sign_up,    only: [:new, :create]
 
   def index
-    @users = User.active.paginate(page: params[:page], per_page: 30)
+    @users = User.paginate(page: params[:page], per_page: 30)
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.active_user.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page], per_page: 10)
   end
 
@@ -67,14 +67,14 @@ class UsersController < ApplicationController
   def following
     @title = t(:following)
     @user = User.find(params[:id])
-    @users = (@user.followed_users.paginate(page: params[:page])).active
+    @users = @user.followed_users.paginate(page: params[:page])
     render 'show_follow'
   end
 
   def followers
     @title = t(:followers)
     @user = User.find(params[:id])
-    @users = (@user.followers.paginate(page: params[:page])).active
+    @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end
 

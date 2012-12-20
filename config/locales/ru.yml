@@ -28,6 +28,8 @@ ru:
   flash_password_resets_error: "Время для изменения пароля истекло."
   flash_password_blank_error: "Пароль не может быть пустым!"
 
+  flash_activation: "Ваша учётная запись успешно активирована."
+
   will_paginate:
     previous_label: "Назад"
     page_gap: "Разрыв страницы"

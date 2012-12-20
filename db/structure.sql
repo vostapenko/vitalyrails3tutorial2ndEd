@@ -1,12 +1,12 @@
 CREATE TABLE `microposts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `content` text,
+  `content` text COLLATE utf8_unicode_ci,
   `user_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_microposts_on_user_id_and_created_at` (`user_id`,`created_at`)
-) ENGINE=InnoDB AUTO_INCREMENT=901 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `relationships` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -18,29 +18,31 @@ CREATE TABLE `relationships` (
   UNIQUE KEY `index_relationships_on_follower_id_and_followed_id` (`follower_id`,`followed_id`),
   KEY `index_relationships_on_follower_id` (`follower_id`),
   KEY `index_relationships_on_followed_id` (`followed_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=263 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `schema_migrations` (
-  `version` varchar(255) NOT NULL,
+  `version` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   UNIQUE KEY `unique_schema_migrations` (`version`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `password_digest` varchar(255) DEFAULT NULL,
-  `locale` varchar(255) DEFAULT NULL,
-  `remember_token` varchar(255) DEFAULT NULL,
+  `password_digest` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `locale` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `admin` tinyint(1) DEFAULT '0',
-  `password_reset_token` varchar(255) DEFAULT NULL,
+  `password_reset_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `password_reset_sent_at` datetime DEFAULT NULL,
+  `activation_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `active` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   KEY `index_users_on_remember_token` (`remember_token`)
-) ENGINE=InnoDB AUTO_INCREMENT=308 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO schema_migrations (version) VALUES ('20120912083053');
 
@@ -60,6 +62,4 @@ INSERT INTO schema_migrations (version) VALUES ('20121101103628');
 
 INSERT INTO schema_migrations (version) VALUES ('20121210151152');
 
-INSERT INTO schema_migrations (version) VALUES ('20121212134217');
-
-INSERT INTO schema_migrations (version) VALUES ('20121212134944');
+INSERT INTO schema_migrations (version) VALUES ('20121216092354');

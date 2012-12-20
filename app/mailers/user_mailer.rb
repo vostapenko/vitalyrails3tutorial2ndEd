@@ -5,4 +5,9 @@ class UserMailer < ActionMailer::Base
     @user = user
     mail(to: user.email) 
   end
+
+  def activation(user)
+    @user = user
+    mail(to: user.email)
+  end
 end

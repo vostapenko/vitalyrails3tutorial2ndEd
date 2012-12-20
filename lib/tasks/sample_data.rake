@@ -8,7 +8,7 @@ namespace :db do
 end
 
 def make_users
-      User.create!(name: "Vitaly Ostapenko",
+      vitaly = User.create!(name: "Vitaly Ostapenko",
                  email: "ostapenko.vitaly@gmail.com",
                  password: "vitaly",
                  password_confirmation: "vitaly",
@@ -17,7 +17,8 @@ def make_users
                  email: "admin@gmail.com",
                  password: "administrator",
                  password_confirmation: "administrator",
-                 locale: "en")
+                 locale: "en",
+                 active: true)
       admin.toggle!(:admin)
       99.times do |n|
         name = Faker::Name.name
@@ -27,7 +28,8 @@ def make_users
                     email: email,
                     password: password,
                     password_confirmation: password,
-                    locale: "en")
+                    locale: "en",
+                    active: true)
       end
 end
 
